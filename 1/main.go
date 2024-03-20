@@ -1,4 +1,4 @@
-package aula
+package main
 
 const a = "Hello, World"
 
