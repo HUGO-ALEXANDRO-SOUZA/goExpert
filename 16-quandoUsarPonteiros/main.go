@@ -1,18 +1,21 @@
 package main
 
-func soma(a, b *int) int {
-	*a = 50
-	*b = 50
-	return *a + *b
+type Conta struct {
+	saldo int
+}
+
+func NewConta() *Conta {
+	return &Conta{saldo: 0}
+}
+
+func (c *Conta) simular(valor int) int {
+	c.saldo += valor
+	println(c.saldo)
+	return c.saldo
 }
 
 func main() {
-
-	minhaVar1 := 10
-	minhaVar2 := 20
-
-	soma(&minhaVar1, &minhaVar2)
-
-	println(minhaVar1)
-	println(minhaVar2)
+	conta := Conta{saldo: 100}
+	conta.simular(200)
+	println(conta.saldo)
 }
