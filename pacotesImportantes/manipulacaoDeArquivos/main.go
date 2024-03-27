@@ -45,4 +45,10 @@ func main() {
 		}
 		fmt.Println(string(buffer[:n]))
 	}
+
+	// Removendo um arquivo
+	err = os.Remove("arquivo.txt")
+	if err != nil {
+		panic(err)
+	}
 }
