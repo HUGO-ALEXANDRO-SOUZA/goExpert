@@ -23,8 +23,8 @@ type ViaCEP struct {
 
 func main() {
 
-	for _, url := range os.Args[1:] {
-		req, err := http.Get(url)
+	for _, cep := range os.Args[1:] {
+		req, err := http.Get("http://viacep.com.br/ws/" + cep + "/json/")
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "Erro ao fazer requisicao: %v\n", err)
 		}
@@ -43,6 +43,14 @@ func main() {
 		fmt.Println(data)
 
 		//Gravando em um arquivo
-
+		file, err := os.Create("cidade.txt")
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Erro ao criar arquivo: %v\n", err)
+		}
+		defer file.Close()
+		_, err = file.WriteString(fmt.Sprintf("CEP: %s, Localidade: %s, UF: %s", data.Cep, data.Localidade, data.Uf))
+		fmt.Println("Arquivo criado com sucesso!")
+		fmt.Println("Cidade: ", data.Localidade)
 	}
+
 }
