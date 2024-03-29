@@ -36,9 +36,15 @@ func BuscaCepHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	cep, error := buscaCep(cepParam)
+	if error != nil {
+		w.WriteHeader(http.StatusOK)
+		return
+	}
+
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
-	w.Write([]byte("Hello, World!"))
+	json.NewEncoder(w).Encode(cep)
 
 }
 
