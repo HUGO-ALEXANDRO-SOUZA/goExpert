@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"goExpert/fundamentos/matematica"
+	"goExpert/1-fundamentos/matematica"
 )
 
 func main() {
