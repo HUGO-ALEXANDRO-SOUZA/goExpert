@@ -14,6 +14,7 @@ func NewProduct(name string, price float64) *Product {
 		Name:  name,
 		Price: price,
 	}
+
 }
 
 func main() {
